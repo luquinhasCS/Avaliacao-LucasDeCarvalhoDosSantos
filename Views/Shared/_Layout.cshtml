@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Avaliacao-Lucas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 4.5rem;
+        }
+        footer {
+            margin-top: 2rem;
+            padding: 1rem 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Avaliacao-Lucas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Calculadora/RealizarSoma?a=5&b=3">Soma</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Calculadora/RealizarSubtracao?a=5&b=3">Subtração</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Calculadora/RealizaMultiplicacao?a=5&b=3">Multiplicação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Calculadora/RealizaDivisao?a=5&b=3">Divisão</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Avaliacao-{SeuNome}. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

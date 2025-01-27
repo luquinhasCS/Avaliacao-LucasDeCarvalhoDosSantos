@@ -1,0 +1,91 @@
+﻿using Avaliacao_Lucas.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Avaliacao_Lucas.Controllers
+{
+    public class CalculadoraController : Controller
+    {
+        private readonly CalculadoraService _calculadoraService;
+
+        public CalculadoraController()
+        {
+            _calculadoraService = new CalculadoraService();
+        }
+
+        [HttpGet]
+        public IActionResult RealizarSoma(int a, int b)
+        {
+            int resultado = _calculadoraService.Somar(a, b);
+            return Content($"<h1>O resultado da soma é: {resultado}</h1>", "text/html");
+        }
+
+        [HttpGet]
+        public IActionResult RealizarSubtracao(int a, int b)
+        {
+            int resultado = _calculadoraService.Subtrair(a, b);
+            return Content($"<h1>O resultado da subtração é: {resultado}</h1>", "text/html");
+        }
+
+        [HttpGet]
+        public IActionResult RealizaMultiplicacao(int a, int b)
+        {
+            int resultado = _calculadoraService.Multiplicar(a, b);
+            return Content($"<h1>O resultado da multiplicação é: {resultado}</h1>", "text/html");
+        }
+
+        [HttpGet]
+        public IActionResult RealizaDivisao(int a, int b)
+        {
+            try
+            {
+                double resultado = _calculadoraService.Dividir(a, b);
+                return Content($"<h1>O resultado da divisão é: {resultado}</h1>", "text/html");
+            }
+            catch (DivideByZeroException)
+            {
+                return Content("<h1>Erro: Divisão por zero não é permitida!</h1>", "text/html");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Calcular(int a, int b, string operacao)
+        {
+            double resultado = 0;
+
+            try
+            {
+                switch (operacao)
+                {
+                    case "soma":
+                        resultado = a + b;
+                        break;
+                    case "subtracao":
+                        resultado = a - b;
+                        break;
+                    case "multiplicacao":
+                        resultado = a * b;
+                        break;
+                    case "divisao":
+                        if (b != 0)
+                            resultado = (double)a / b;
+                        else
+                            ViewBag.Error = "Divisão por zero não é permitida.";
+                        break;
+                }
+                ViewBag.Resultado = resultado;
+            }
+            catch
+            {
+                ViewBag.Error = "Ocorreu um erro ao realizar a operação.";
+            }
+
+            return View("Index");
+        }
+    }
+}
