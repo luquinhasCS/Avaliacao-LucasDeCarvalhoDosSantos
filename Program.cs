@@ -8,7 +8,7 @@ var app = builder.Build();
 // Configurar o pipeline de solicitação HTTP
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/Calculadora");
     app.UseHsts();
 }
 
@@ -21,6 +21,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Calculadora}/{action=Index}/{id?}");
 
 app.Run();
